@@ -49,7 +49,7 @@ resource "aws_s3_bucket_logging" "lab_bucket_logging" {
   target_bucket = aws_s3_bucket.log_bucket.id
   target_prefix = "log/"
 }
-# SonarQube re-scan
+
 resource "aws_s3_bucket_policy" "log_bucket_policy" {
   bucket = aws_s3_bucket.log_bucket.id
 
@@ -57,6 +57,15 @@ resource "aws_s3_bucket_policy" "log_bucket_policy" {
     Version = "2012-10-17"
     Statement = [
       {
+        Effect = "Allow"
+        Principal = {
+          Service = "logging.s3.amazonaws.com"
+        }
+        Action   = "s3:PutObject"
+        Resource = "${aws_s3_bucket.log_bucket.arn}/*"
+      },
+      {
+        Sid       = "HTTPSOnly"
         Effect    = "Deny"
         Principal = "*"
         Action    = "s3:*"
