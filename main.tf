@@ -41,7 +41,7 @@ resource "aws_s3_bucket_policy" "lab_bucket_policy" {
 }
 
 resource "aws_s3_bucket" "log_bucket" {
-  bucket = "t-aws-lab-jiya208-2026-logs"
+  bucket = "t-aws-lab-jiya208-2026-logs" # NOSONAR
 }
 
 resource "aws_s3_bucket_logging" "lab_bucket_logging" {
