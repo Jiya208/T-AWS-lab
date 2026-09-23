@@ -49,3 +49,4 @@ resource "aws_s3_bucket_logging" "lab_bucket_logging" {
   target_bucket = aws_s3_bucket.log_bucket.id
   target_prefix = "log/"
 }
+# SonarQube re-scan
